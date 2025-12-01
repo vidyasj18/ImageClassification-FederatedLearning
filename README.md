@@ -51,3 +51,61 @@ This project uses a simple Convolutional Neural Network (CNN) designed for the C
 - Loss: Sparse Categorical Crossentropy
 - Metrics: Accuracy
 
+## How Federated Learning model works
+### 1️. Server starts
+- Waits for 2 clients
+- Runs FedAvg strategy
+- Executes 3 federated rounds
+
+### 2. Clients start
+- Each client:
+- Receives global weights
+- Trains on its local split of CIFAR-10
+- Sends updated weights to server
+
+### 3. Server aggregates
+- Performs Federated Averaging
+- Builds a new global model each round
+
+### 4. Global model saved
+- After training completes, server saves:
+- model.h5
+
+### 5. Global evaluation
+- global_test.py loads the saved model and tests on the full CIFAR-10 test set.
+
+## How to run the task
+Step 1 — Start Server
+```
+python server.py
+```
+
+Step 2 — Start Client 1
+```
+python client.py 1
+```
+
+Step 3 — Start Client 2
+```
+python client.py 2
+```
+(Each client trains on different halves of CIFAR-10.)
+
+Step 4 — Evaluate Global Model - After training completes:
+```
+python global_test.py
+```
+
+## Results
+Federated Training Results
+| Round | Federated Loss |
+| ----- | -------------- |
+| 1     | 1.4750         |
+| 2     | 1.1055         |
+| 3     | 0.9721         |
+
+Final Global Model Evaluation
+- Test Loss: 2.3175
+- Test Accuracy: 10.01%
+
+
