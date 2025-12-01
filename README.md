@@ -16,7 +16,7 @@ CIFAR-10 dataset built into TensorFlow contains:
 - 32×32 RGB images
 Clients do not download separately — TF loads automatically.
 
-## Built this model using:
+## Built this model using 
 - 1 server
 - 2 clients
 - CIFAR-10 dataset
@@ -38,7 +38,7 @@ pip install flwr tensorflow
 ```
 
 ## Model Architecture
-This project uses a simple Convolutional Neural Network (CNN) designed for the CIFAR-10 dataset.
+This task uses a simple Convolutional Neural Network (CNN) designed for the CIFAR-10 dataset.
 
 - 2 Convolution layers - Applies filters of size 3×3. And detects low-level features like edges, textures, corners
 - MaxPooling - Reduces image size by taking the maximum value in a region (usually 2×2).
@@ -69,7 +69,7 @@ This project uses a simple Convolutional Neural Network (CNN) designed for the C
 
 ### 4. Global model saved
 - After training completes, server saves:
-- model.h5
+- model.h5(Global_model.py)
 
 ### 5. Global evaluation
 - global_test.py loads the saved model and tests on the full CIFAR-10 test set.
