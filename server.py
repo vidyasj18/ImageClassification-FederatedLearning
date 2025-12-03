@@ -43,7 +43,7 @@ fl.server.start_server(
     strategy=strategy
 )
 
-# save global model
+# save global model - Creates a folder named global_model - helps in comapring accuracy and deployment
 os.makedirs("global_model", exist_ok=True)
 global_model.save("global_model/model.h5")
 print("\n Global model saved successfully!")

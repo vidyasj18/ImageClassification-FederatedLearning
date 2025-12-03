@@ -1,5 +1,7 @@
 import tensorflow as tf
 
+# used to varify global performance on the test data
+
 print("Loading global FL model...")
 model = tf.keras.models.load_model("global_model/model.h5")
 print("Model loaded!")

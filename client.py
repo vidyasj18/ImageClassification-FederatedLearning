@@ -2,6 +2,8 @@ import flwr as fl
 import tensorflow as tf
 from tensorflow.keras.datasets import cifar10
 
+# cifar10 dataset having 10 classes
+
 # defining the function
 
 def model_fn():
@@ -21,17 +23,20 @@ def model_fn():
     )
     return model
 
-# load CIFAR-10 data
+# load CIFAR-10 dataset
 (x_train, y_train), (x_test, y_test) = cifar10.load_data()
-x_train, y_train = x_train[:10000] / 255.0, y_train[:10000]  # smaller dataset
+x_train, y_train = x_train[:10000] / 255.0, y_train[:10000]  
 x_test, y_test = x_test[:2000] / 255.0, y_test[:2000]
 
 
-# flower client class
+# flower client class - NumPyClient is used
 class CifarClient(fl.client.NumPyClient):
+
+    # Initializes the model when client starts.
     def __init__(self):
         self.model = model_fn()
 
+    # Returns the client’s current model weights.
     def get_parameters(self, config):
         return self.model.get_weights()
 
